@@ -675,24 +675,14 @@
     
     Command:
 
-<<<<<<< HEAD
     ```
     ./wasp-cli request-funds 
-=======
-    ```bash
-    ./wasp-cli 
->>>>>>> 0bbcc70192b104f57f2fb26f489e27c5d0ffe55f
     ```
     
     Response:
 
-<<<<<<< HEAD
     ```
     Request funds for address 1BKQi3aa998nLP5be2KSi79GdcZSHN6v8mLFPQmDR2DbT: success
-=======
-    ```bash
-  
->>>>>>> 0bbcc70192b104f57f2fb26f489e27c5d0ffe55f
     ```
     
     </details>
@@ -704,13 +694,8 @@
     
     Command:
 
-<<<<<<< HEAD
     ```
     ./wasp-cli send-funds 14zg9ynYZLTVnd1SPxrqCuTLdTGVkU8cz6cskAevRMVHm 
-=======
-    ```bash
-    ./wasp-cli 
->>>>>>> 0bbcc70192b104f57f2fb26f489e27c5d0ffe55f
     ```
     
     Response:
