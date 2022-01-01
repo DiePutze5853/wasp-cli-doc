@@ -1,8 +1,5 @@
 # Wasp-CLI Documentation
 
-<details>
-<summary>Table of Contents</summary>
-
 * [Global Flags](#global-flags)
   * [address-index](#address-index)
   * [config string](#config-string)
@@ -45,7 +42,6 @@
   * [send-funds](#send-funds)
   * [set](#set)
 
-</details>
 
 <!-- Global Flags  -->
 ## Global Flags
@@ -54,8 +50,21 @@
     <details>
     <summary>Example</summary>
 
-    ```bash
+    Command:
 
+    ```bash
+    ./wasp-cli address
+    ./wasp-cli address -i 5
+    ```
+
+    Response:
+
+    ```bash
+    Address index 0
+      Address:     1HxJxu91B5txjaCQZCrxKEYL2BBxditP9JXQ61z46eJRu
+
+    Address index 5
+      Address:     1HCFjRdyMMZBDTV4vAptdtgLYVixoZYmoBmPk6Hg2Nyko
     ```
 
     </details>
@@ -65,7 +74,14 @@
     <details>
     <summary>Example</summary>
 
+    Example:
+
     ```bash
+    root@iota-defi-sc:/opt/services/iscp/deps/wasp-cli# ls
+    docker-entrypoint.sh  Dockerfile  wasp-cli
+    root@iota-defi-sc:/opt/services/iscp/deps/wasp-cli# ./wasp-cli -c ../../data/     wasp-cli.json address
+    Address index 0
+      Address:     1HxJxu91B5txjaCQZCrxKEYL2BBxditP9JXQ61z46eJRu
 
     ```
 
@@ -77,7 +93,8 @@
     <summary>Example</summary>
     
     ```bash
-
+    ./wasp-cli --debug
+    ./wasp.cli -d
     ```
 
     </details>
@@ -87,22 +104,26 @@
     <details>
     <summary>Example</summary>
     
-    ```bash
+    Example
 
+    ```bash
+    ./wasp-cli address --verbose
+    Address index 0
+      Private key: 3y2qamP4KLsedUbfABawtUYw8HGduqstQXgLaAFfo2uFXZAedZXvC5TwdSBBKbYHs4WyiPkfk7kvSqpsNSh1gZy
+      Public key:  64iDMsPDYb2YYFhpRJxkPRvdgEPBe5etBvux4rCohj3y
+      Address:     1HxJxu91B5txjaCQZCrxKEYL2BBxditP9JXQ61z46eJRu
+
+    Instead of:
+    ./wasp-cli address
+    Address index 0
+      Address:     1HxJxu91B5txjaCQZCrxKEYL2BBxditP9JXQ61z46eJRu  
     ```
 
     </details>
 
 * #### wait
     wait for request completion (default: **true**)
-    <details>
-    <summary>Example</summary>
     
-    ```bash
-
-    ```
-
-    </details>
 
 * #### help
     help for wasp-cli
@@ -372,14 +393,18 @@
     <details>
     <summary>Example</summary>
     
-    ```bash
+    Command:
 
+    ```bash
+    ./wasp-cli chain deposit IOTA:100
     ```
 
     Response:
 
     ```bash
-    
+    Posted on-ledger transaction 5KZgzDM93AtNtcHEmvQovD7skwRWTFwQ75mh3i353LY8 containing 1 request:
+    -  (check result with: ./wasp-cli chain request 2TANbnucWCjTHvxnvFEVBSRS7RYGj8YDoPuXN8zJVaFTyEX)
+    Waiting for tx requests to be processed...    
     ```
 
     </details>
@@ -405,15 +430,24 @@
     
     <details>
     <summary>Example</summary>
-    
-    ```bash
 
+    Command:
+
+    ```bash
+    ./wasp-cli chain info
     ```
 
     Response:
 
     ```bash
-    
+    Chain ID: kAGLveDrYceD8j46M6rh5udMR6N2E7HkxraRhT1LJT4N
+    Committee nodes: [127.0.0.1:4000]
+    Active: true
+    Description: Test EVM
+    #Contracts: 7
+    Owner: A/1HxJxu91B5txjaCQZCrxKEYL2BBxditP9JXQ61z46eJRu::00000000
+    Default owner fee: 0 IOTA
+    Default validator fee: 0 IOTA
     ```
 
     </details>
@@ -422,15 +456,21 @@
     
     <details>
     <summary>Example</summary>
-    
-    ```bash
 
+    Command:
+
+    ```bash
+    ./wasp-cli chain list
     ```
 
     Response:
 
     ```bash
-    
+    Total 1 chain(s) in wasp node https://api.wasp.sc.iota-defi.com
+    -------                                       ------
+    chainid                                       active
+    -------                                       ------
+    kAGLveDrYceD8j46M6rh5udMR6N2E7HkxraRhT1LJT4N  true
     ```
 
     </details>
@@ -440,14 +480,22 @@
     <details>
     <summary>Example</summary>
     
-    ```bash
+    Command:
 
+    ```bash
+    ./wasp-cli chain list-accounts
     ```
 
     Response:
 
     ```bash
-    
+    Total 3 account(s) in chain kAGLveDrYceD8j46M6rh5udMR6N2E7HkxraRhT1LJT4N
+    -------
+    agentid
+    -------
+    A/kAGLveDrYceD8j46M6rh5udMR6N2E7HkxraRhT1LJT4N::adc164b5
+    A/1HxJxu91B5txjaCQZCrxKEYL2BBxditP9JXQ61z46eJRu::00000000
+    A/kAGLveDrYceD8j46M6rh5udMR6N2E7HkxraRhT1LJT4N::00000000
     ```
 
     </details>
@@ -457,14 +505,16 @@
     <details>
     <summary>Example</summary>
     
-    ```bash
+    Command:
 
+    ```bash
+    ./wasp-cli chain list-blobs
     ```
 
     Response:
 
-    ```bash
-    
+    ```
+    Total 0 blob(s) in chain $/kAGLveDrYceD8j46M6rh5udMR6N2E7HkxraRhT1LJT4N
     ```
 
     </details>
@@ -474,14 +524,23 @@
     <details>
     <summary>Example</summary>
     
-    ```bash
+    Command:
 
+    ```bash
+    ./wasp-cli chain list-contracts
     ```
 
     Response:
 
     ```bash
-    
+    Total 7 contracts in chain $/kAGLveDrYceD8j46M6rh5udMR6N2E7HkxraRhT1LJT4N
+    -----     ----        -----------                    --------                                      -------                                                    ---------                           -------------
+    hname     name        description                    proghash                                      creator                                                    owner fee                           validator fee
+    -----     ----        -----------                    --------                                      -------                                                    ---------                           -------------
+    cebf5908  root        Root Contract                  ZbduPgjygsVS4Pvc9s34xUn9u3JsVw1yyqTY57Ub2uW   A/111111111111111111111111111111111::00000000              0   0
+    f538ef2b  blocklog    Block log contract             3xW6qNoMyETgBcYHede5Cju8nZ1Eyt27hoxPhDyXHWac  A/111111111111111111111111111111111::00000000              0   0
+    fd91bc63  blob        Blob Contract                  7iL8ojzK47m2KVYpNPMc7BSt6tWxCfF4xefYB2tdTkKs  A/111111111111111111111111111111111::00000000              0   0
+
     ```
 
     </details>
@@ -562,13 +621,13 @@
     Command:
 
     ```bash
-    ./wasp-cli 
+    ./wasp-cli check-versions
     ```
     
     Response:
 
     ```bash
-  
+    Wasp-cli version matches Wasp #0
     ```
     
     </details>
@@ -600,13 +659,15 @@
     Command:
 
     ```bash
-    ./wasp-cli 
+    ./wasp-cli init
     ```
     
     Response:
 
     ```bash
-  
+    Initialized wallet seed in wasp-cli.json
+
+    IMPORTANT: wasp-cli is alpha phase. The seed is currently being stored in a plain text file which is NOT secure. Do not use this seed to store funds in the mainnet!
     ```
     
     </details>
@@ -638,13 +699,15 @@
     Command:
 
     ```bash
-    ./wasp-cli 
+    ./wasp-cli mint 10
     ```
     
     Response:
 
     ```bash
-  
+    Posted on-ledger transaction 6NxAa3HajLbP7AY2satganyqk8GmZ377kSfT8nXkZdC
+    Minted 10 tokens of color 3bdu2XjVePNJ8MB5oGHCHU8RPvjPeV8SpbE6RHLt5DXU
+    Transaction ID: 6NxAa3HajLbP7AY2satganyqk8GmZ377kSfT8nXkZdC
     ```
     
     </details>
@@ -711,16 +774,25 @@
     <details>
     <summary>Example</summary>
     
-    Command:
+    Example wasp-cli.json:
 
     ```bash
-    ./wasp-cli 
-    ```
-    
-    Response:
+    wasp-cli set goshimmer.api 127.0.0.1:8080
 
-    ```bash
-  
+    wasp-cli set wasp.0.api 127.0.0.1:9090
+    wasp-cli set wasp.0.nanomsg 127.0.0.1:5550
+    wasp-cli set wasp.0.peering 127.0.0.1:4000
+
+    ## You can add as many nodes as you like in your committee
+    wasp-cli set wasp.1.api 127.0.0.1:9091
+    wasp-cli set wasp.1.nanomsg 127.0.0.1:5551
+    wasp-cli set wasp.1.peering 127.0.0.1:4001
+
+    ...
+
+    wasp-cli set wasp.N.api 127.0.0.1:9091
+    wasp-cli set wasp.N.nanomsg 127.0.0.1:5551
+    wasp-cli set wasp.N.peering 127.0.0.1:4001
     ```
     
     </details>
